@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Counselor(models.Model):
@@ -15,4 +16,3 @@ class Counselor(models.Model):
     name = models.CharField(max_length=100)
     workemail = models.CharField("Work Email", max_length=200)
     city = models.CharField(max_length=100, choices=CITY, blank = True)
-
