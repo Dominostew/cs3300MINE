@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #add app name
     'project_app',
+    'bootstrap5',
 ]
 
 #authenticating users

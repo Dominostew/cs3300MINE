@@ -1,0 +1,12 @@
+{% extends 'project_app/base_template.html' %}
+{% load static %}
+{% block content %}
+
+<form actions="" methods="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <input type="submit" name="Submit">
+</form>
+
+{% endblock %}
