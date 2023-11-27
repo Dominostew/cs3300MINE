@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from project_app.models import Counselor
+from project_app.models import User
 
 # Create your tests here.
 class CounselorModelTest(TestCase):
