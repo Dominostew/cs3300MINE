@@ -19,6 +19,7 @@ class Calendar(models.Model):
         ('Not Busy', 'Not Busy'),
     )
     
+    counselor = models.ForeignKey(Counselor, null=True, on_delete= models.SET_NULL)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
