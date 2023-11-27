@@ -19,7 +19,11 @@ class Calendar(models.Model):
         ('Not Busy', 'Not Busy'),
     )
     
-    title = models.CharField(max_length=200)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.status
+    def get_absolute_url(self):
+        return reverse('student-detail', args=[str(self.id)])
