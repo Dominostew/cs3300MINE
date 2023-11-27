@@ -5,7 +5,8 @@
     <h1>Calendar</h1>
 
     {% for i in calendar %}
+        <h3>{{i.name}}</h3>
         <h5>{{i.status}}</h5>
     {% endfor %}
 
-{% endblock %}
+{% endblock content %} 

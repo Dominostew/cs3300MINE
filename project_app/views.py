@@ -6,5 +6,8 @@ from .models import *
 def home(request):
      return render(request, 'project_app/home.html')
 
-def user(request):
-     return render(request, 'project_app/user.html')
+def counselor(request):
+     return render(request, 'project_app/counselor.html', {'counselor':counselor})
+
+def calendar(request):
+     return render(request, 'project_app/calendar.html', {'calendar':calendar})
