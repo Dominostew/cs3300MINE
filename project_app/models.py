@@ -7,3 +7,19 @@ class Counselor(models.Model):
     workemail = models.CharField(max_length=200)
     phone = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('student-detail', args=[str(self.id)])
+    
+class Calendar(models.Model):
+    STATUS = (
+        ('Busy', 'Busy'),
+        ('Not Busy', 'Not Busy'),
+    )
+    
+    title = models.CharField(max_length=200)
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
