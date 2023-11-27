@@ -28,3 +28,10 @@ class Calendar(models.Model):
         return self.status
     def get_absolute_url(self):
         return reverse('student-detail', args=[str(self.id)])
+    
+class CalendarInCounselors(models.Model):
+    counselors = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+    calendars = models.ForeignKey(Counselor, on_delete=models.CASCADE)
+
+class Meta:
+    unique_together = ('counselor', 'calendar')
