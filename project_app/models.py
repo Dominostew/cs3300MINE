@@ -2,17 +2,8 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-class User(models.Model):
-
-    CITY = (
-        ('COSPRGS', 'Colorado Springs'),
-        ('DEN', 'Denver'),
-        ('PBLO' ,'Pueblo'),
-        ('NRGLN', 'Northglenn'),
-        ('LNGMT', 'Longmont'),
-        ('MONT', 'Montrose'),
-    )
-
+class Counselor(models.Model):
     name = models.CharField(max_length=100)
-    workemail = models.CharField("Work Email", max_length=200)
-    city = models.CharField(max_length=100, choices=CITY, blank = True)
+    workemail = models.CharField(max_length=200)
+    phone = models.CharField(max_length=100, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
