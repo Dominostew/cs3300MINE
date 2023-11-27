@@ -6,7 +6,7 @@ def home(request):
      return render(request, 'project_app/home.html')
 
 def user(request):
-     return HttpResponse('user')
+     return render(request, 'project_app/user.html')
 
 def calendar(request):
-     return HttpResponse('calendar')
+     return render(request, 'project_app/calendar.html')
