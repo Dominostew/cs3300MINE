@@ -14,16 +14,14 @@ def calendar(request):
      return render(request, 'project_app/calendar.html', {'calendar':calendar})
 
 def createCalendar(request): 
-     form = CalendarForm
+     form = CalendarForm(request.POST)
      if request.method == 'POST':
           #print('Printing post:', request.POST)
           form = CalendarForm(request.POST)
           if form.is_valid():
                form.save()
                return redirect('/')
-
-     context = {'form':form}
-     return render(request, 'project_app/create_calendar.html', context)  
+     return render(request, 'project_app/create_calendar.html', {'form':form})  
 
 def updateCalendar(request, pk):
      calendar = Calendar.objects.get(id=pk)  
@@ -41,3 +39,7 @@ def deleteCalendar(request, pk):
      calendar = Calendar.objects.get(id=pk) 
      context={'item':calendar}
      return render(request, 'project_app/delete_calendar.html', context)
+
+#calendar
+def index(request):
+     return HttpResponse('hello')

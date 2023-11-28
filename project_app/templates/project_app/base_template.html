@@ -1,18 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MyApp</title>
+<title>Counselor Calendar</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 </head>
+
+
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light lead">
+<div class="container-fluid">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<div class="navbar-nav">
+<a class="nav-link" href="{% url 'home' %}">Home</a>
+<a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+</div>
+</div>
+</div>
+</nav>
 
-    <h1>Navbar</h1>
-    <hr>
-   
-    {% block content %}
-    {% endblock %}
 
-    <hr>
-    <h5>footer<h5>
+<!-- add block content from html template -->
+{% block content %}
 
+
+{% endblock %}
 </body>
 </html>
