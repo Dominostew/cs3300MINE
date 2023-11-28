@@ -13,13 +13,14 @@ class Counselor(models.Model):
     def get_absolute_url(self):
         return reverse('student-detail', args=[str(self.id)])
     
-class Calendar(models.Model):
+class Event(models.Model):
     STATUS = (
         ('Busy', 'Busy'),
         ('Not Busy', 'Not Busy'),
     )
     
     counselor = models.ForeignKey(Counselor, null=True, on_delete= models.SET_NULL)
+    id = models .AutoField(primary_key=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
@@ -28,10 +29,3 @@ class Calendar(models.Model):
         return self.status
     def get_absolute_url(self):
         return reverse('student-detail', args=[str(self.id)])
-    
-#class CalendarInCounselors(models.Model):
-    #counselors = models.ForeignKey(Calendar, on_delete=models.CASCADE)
-    #calendars = models.ForeignKey(Counselor, on_delete=models.CASCADE)
-
-#class Meta:
-    #unique_together = ('counselor', 'calendar')

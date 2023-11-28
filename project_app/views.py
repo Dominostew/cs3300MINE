@@ -10,36 +10,29 @@ def home(request):
 def counselor(request):
      return render(request, 'project_app/counselor.html', {'counselor':counselor})
 
-def calendar(request):
-     return render(request, 'project_app/calendar.html', {'calendar':calendar})
+def event(request):
+     return render(request, 'project_app/event.html', {'event':event})
 
-def createCalendar(request): 
+def createEvent(request): 
      form = CalendarForm(request.POST)
      if request.method == 'POST':
-          #print('Printing post:', request.POST)
           form = CalendarForm(request.POST)
           if form.is_valid():
                form.save()
                return redirect('/')
-     return render(request, 'project_app/create_calendar.html', {'form':form})  
+     return render(request, 'project_app/create_event.html', {'form':form})  
 
-def updateCalendar(request, pk):
-     calendar = Calendar.objects.get(id=pk)  
-     form = CalendarForm(instance=calendar)
+def updateEvent(request, pk):
+     event = Event.objects.get(id=pk)  
+     form = CalendarForm(instance=event)
      if request.method == 'POST':
           #print('Printing post:', request.POST)
-          form = CalendarForm(request.POST, instance=calendar)
+          form = CalendarForm(request.POST, instance=event)
           if form.is_valid():
                form.save()
                return redirect('/')
-     context = {'form':form}
-     return render(request, 'project_app/create_calendar.html', context)
+     return render(request, 'project_app/create_event.html', {'form':form})
 
-def deleteCalendar(request, pk):
-     calendar = Calendar.objects.get(id=pk) 
-     context={'item':calendar}
-     return render(request, 'project_app/delete_calendar.html', context)
-
-#calendar
-def index(request):
-     return HttpResponse('hello')
+def deleteEvent(request, pk):
+     event = Event.objects.get(id=pk) 
+     return render(request, 'project_app/delete_event.html', {'item':event})

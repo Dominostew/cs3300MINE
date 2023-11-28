@@ -3,5 +3,5 @@ from .models import *
 
 class CalendarForm(ModelForm):
     class Meta:
-        model = Calendar
+        model = Event
         fields = '__all__'

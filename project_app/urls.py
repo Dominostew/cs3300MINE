@@ -1,19 +1,12 @@
 from django.urls import path
 from . import views
 
-#calendar
-from django.conf.urls import url
-
-app_name = 'project_app'
 urlpatterns = [
      path('', views.home, name='home'),
      path('counselor/', views.counselor, name='counselor'),
-     path('calendar/', views.calendar, name='calendar'),
+     path('event/', views.event, name='event'),
      
-     path('create_calendar/', views.createCalendar, name='create_calendar'), 
-     path('update_calendar/<str:pk>/', views.updateCalendar, name='update_caledar'),
-     path('delete_calendar/<str:pk>/', views.deleteCalendar, name='delete_caledar'),
-
-     #calendar
-     url(r'^index/$', views.index, name='index'),
+     path('create_event/', views.createEvent, name='create_event'), 
+     path('update_event/<str:pk>/', views.updateEvent, name='update_event'),
+     path('delete_event/<str:pk>/', views.deleteEvent, name='delete_event'),
 ]
