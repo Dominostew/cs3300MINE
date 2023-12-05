@@ -1,12 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
      path('', views.home, name='home'),
      path('counselor/', views.counselor, name='counselor'),
      path('event/', views.event, name='event'),
-     
-     path('create_event/', views.createEvent, name='create_event'), 
-     path('update_event/<str:pk>/', views.updateEvent, name='update_event'),
-     path('delete_event/<str:pk>/', views.deleteEvent, name='delete_event'),
+
+     path('accounts/login', views.loginPage, name='login'),
+     path('accounts/register', views.registerPage, name='register'),
 ]

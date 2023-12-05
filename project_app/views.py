@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from .forms import CreateUserForm
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -13,26 +15,19 @@ def counselor(request):
 def event(request):
      return render(request, 'project_app/event.html', {'event':event})
 
-def createEvent(request): 
-     form = CalendarForm(request.POST)
-     if request.method == 'POST':
-          form = CalendarForm(request.POST)
-          if form.is_valid():
-               form.save()
-               return redirect('/')
-     return render(request, 'project_app/create_event.html', {'form':form})  
+def registerPage(request):
+     form = CreateUserForm()
 
-def updateEvent(request, pk):
-     event = Event.objects.get(id=pk)  
-     form = CalendarForm(instance=event)
      if request.method == 'POST':
-          #print('Printing post:', request.POST)
-          form = CalendarForm(request.POST, instance=event)
+          form = CreateUserForm(request.POST)
           if form.is_valid():
-               form.save()
-               return redirect('/')
-     return render(request, 'project_app/create_event.html', {'form':form})
+               user = form.save()
+               username = form.cleaned_data.get('username')
+               
+               messages.success(request, 'Account was created for' + username)
+               return redirect('login')
 
-def deleteEvent(request, pk):
-     event = Event.objects.get(id=pk) 
-     return render(request, 'project_app/delete_event.html', {'item':event})
+     return render(request, 'accounts/register.html', {'form':form})
+
+def loginPage(request):
+     return render(request, 'accounts/login.html', {})

@@ -21,15 +21,16 @@ aria-expanded="false" aria-label="Toggle navigation">
 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 <div class="navbar-nav">
 <a class="nav-link" href="{% url 'home' %}">Home</a>
-<a class="nav-link" href="{% url 'event' %}">Event</a>
+<a class="nav-link" href="{% url 'event' %}">Calendar</a>
+<a class="nav-link" href="{% url 'login' %}">Login</a>
+<a class="nav-link" href="{% url 'register' %}">Register</a>
 </div>
 </div>
 </div>
 </nav>
 
 {% block content %}
-
-
 {% endblock %}
+
 </body>
 </html>
